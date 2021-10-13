@@ -38,6 +38,36 @@ closeBtn.addEventListener('click',function(){
 
 // Implémenter entrées du formulaire//
 
-console.log(testjjj);
 
-console.log(modif);
+document.getElementById('location2').checked = true;
+
+
+// Ajouter validation ou messages d'erreur// 
+
+document.querySelector('.bground') .addEventListener("submit", function(e){
+e.preventDefault();
+let erreur;
+let infoprenom = document.getElementById("prenom");
+let infonom = document.getElementById("nom");
+
+
+
+if (!infoprenom.value){
+
+erreur = "Veuillez entrer 2 caractères ou plus pour le champ du nom";
+
+}
+
+
+
+
+if (erreur){
+  document.getElementById("erreur") .innerHTML= erreur;
+}
+
+
+
+  alert("Formulaire envoyé")
+}
+
+)
