@@ -7,13 +7,37 @@ function editNav() {
 	}
 }
 
-// DOM Elements
+// DOM Elements & Erreur // 
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
-const erreurprenom = document.getElementById('fielderror');
-const erreurnom = document.getElementById('fielderror2');
-const erreurmail = document.getElementById('fielderror3');
+const erreurprenom = document.getElementById('formerror');
+const erreurnom = document.getElementById('formerror2');
+const erreurmail = document.getElementById('formerror3');
+
+
+// Regex // 
+
+  //Regex
+
+  const configregex=/^[a-zA-ZÀ-ÖØ-öø-ÿ---_]+$/;
+  const regexmail = /^\S+@\S+\.\S+$/;
+
+
+  
+
+    // DISPLAY MODAL SUBMIT
+	function displayModalSubmit() {
+		modalbg.style.display = 'none';
+		thankBg.style.display = 'block';
+		}
+
+// Erreur Formulaire // 
+
+const erremail =document.querySelector("#erreur_email")
+const erreurdate =document.querySelector("#erreur_date")
+const erreurquestion = document.querySelector('#erreur_participation')
+const erreurville = document.querySelector('#erreurville')
 
 
 
@@ -50,8 +74,12 @@ document.getElementById('location2').checked = true;
 // Ajouter validation ou messages d'erreur// 
 
 
-document.getElementById('btn-test').addEventListener("click",function(){
+document.getElementById("btntest").addEventListener("click",function(e){
 
+
+
+
+	
 	// (1) Le champ Prénom a un minimum de 2 caractères / n'est pas vide.
 
 
@@ -77,6 +105,8 @@ document.getElementById('btn-test').addEventListener("click",function(){
 
 	const valeurnom = document.getElementById("nom").value;
 
+	console.log(valeurnom);
+
 	erreurnom.style.display= "none";
 
 	if(valeurnom.length < 2){
@@ -89,33 +119,77 @@ document.getElementById('btn-test').addEventListener("click",function(){
 		
 	}
 
-	
+
+
+
 	// Vérifier adresse Email// 
+
 	
+	if (!mail.value.match(regexmail)) {
+		erremail.textContent = "veuillez renseigner un email";
+		mail.classList.add ("formulaire_erreur")
+
+	  }else {
+		mail.classList.add ("formulaire_valid")
+		erremail.textContent = "";
+	  }
 
 
+
+	// Date de Naissance // 
+
+	if (!date.value) {
+		erreurdate.textContent = "veuillez renseigner une date de naissance";
+		date.classList.add ("formulaire_erreur")
+	  }else {
+		date.classList.add ("formulaire_valider")
+		erreurdate.textContent = "";
+	  }
+
+
+
+	  //Nombre de  Participation // 
+
+	  if (!question.value) {
+		erreurquestion.textContent = "veuillez répondre à la question ";
+		question.classList.add ("formulaire_erreur")
+	  }else {
+		question.classList.add ("formulaire_valider")
+		erreurquestion.textContent = "";
+	  }
+
+	  // Choix de la ville // 
+
+	
+	if (!ville.value) {
+
+		erreurville.textContent = "veuillez choisir une ville ";
+
+	} else {
+		erreurville.textContent = "";
+	  }
+
+
+ 
+	  if (nom.value && prenom.value && mail.value && date.value && question.value ) {
+		alert("Tres bien");
+		displayModalSubmit()  
 		
-	
-
-
-	
-})	
-
-
-
-
-
-
-  
-
+	  } 
 
 	
-
-	//"Vous devez choisir une option."//
-
-
-	//"Vous devez vérifier que vous acceptez les termes et conditions."
+}
 
 
-	//"Vous devez entrer votre date de naissance."//
+)
 
+
+
+// confirmation formulaire
+const modalSubmit = document.querySelector('.container-confirmation');
+
+// confirmation 
+function displayModalSubmit() {
+	modalbg.style.display = 'none';
+	modalSubmit.style.display = 'block';
+}
