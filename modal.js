@@ -9,6 +9,7 @@ function editNav() {
 
 // DOM Elements & Erreur // 
 const modalbg = document.querySelector(".bground");
+const modalbg2 = document.querySelector(".submitted-form");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const erreurprenom = document.getElementById('formerror');
@@ -187,10 +188,16 @@ document.getElementById("btntest").addEventListener("click",function(e){
 
 // confirmation formulaire
 const modalSubmit = document.querySelector('.container-confirmation');
+const closebtn = document.querySelector('#close-btn-confirmation')
 
 
+closebtn.addEventListener('click', function () {
+
+	modalbg2.style.display = "none";
 
 
+}
+)
 
 
 // confirmation 
@@ -198,9 +205,12 @@ const modalSubmit = document.querySelector('.container-confirmation');
 function ModalSubmit() {
 	modalbg.style.display = 'none';	
 	modalSubmit.style.display = 'block';
+
 	
 	
 }
+
+
 
 
 
