@@ -172,8 +172,8 @@ document.getElementById("btntest").addEventListener("click",function(e){
 
  
 	  if (nom.value && prenom.value && mail.value && date.value && question.value ) {
-		alert("Tres bien");
-		displayModalSubmit()  
+	
+		ModalSubmit()  
 		
 	  } 
 
@@ -188,8 +188,19 @@ document.getElementById("btntest").addEventListener("click",function(e){
 // confirmation formulaire
 const modalSubmit = document.querySelector('.container-confirmation');
 
+
+
+
+
+
 // confirmation 
-function displayModalSubmit() {
-	modalbg.style.display = 'none';
+
+function ModalSubmit() {
+	modalbg.style.display = 'none';	
 	modalSubmit.style.display = 'block';
+	
+	
 }
+
+
+
