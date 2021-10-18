@@ -153,6 +153,11 @@ color: white;
   text-align: center;
 }
 
+.erreur {
+  display: block;
+  margin-left: 8px;
+}
+
 
 @media screen and (max-width: 768px) {
   .topnav a {display: none;}

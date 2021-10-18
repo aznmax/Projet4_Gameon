@@ -12,11 +12,23 @@ const modalbg = document.querySelector(".bground");
 const modalbg2 = document.querySelector(".submitted-form");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
+const checkbox1 = document.querySelector('#location1')
+const checkbox2 = document.querySelector('#location2')
+const checkbox3 = document.querySelector('#location3')
+const checkbox4 = document.querySelector('#location4')
+const checkbox5 = document.querySelector('#location5')
+const checkbox6 = document.querySelector('#location6')
 const erreurprenom = document.getElementById('formerror');
 const erreurnom = document.getElementById('formerror2');
 const erreurmail = document.getElementById('formerror3');
-let  validationprenom = false;
+let validationprenom = false;
 let validationnom = false;
+let validationville = false;
+let validationmail = false;
+let validationdate = false;
+let validationparticip = false;
+const checkboxvalidation = document.querySelector("#checkbox1");
+
 
 
 
@@ -42,6 +54,7 @@ const erremail = document.querySelector("#erreur_email")
 const erreurdate = document.querySelector("#erreur_date")
 const erreurquestion = document.querySelector('#erreur_participation')
 const erreurville = document.querySelector('#erreurville')
+const erreurbox= document.querySelector("#erreurcheckbox")
 
 
 
@@ -82,6 +95,8 @@ document.getElementById('location2').checked = true;
 
 document.getElementById("btntest").addEventListener("click", function (e) {
 
+	e.preventDefault();
+
 
 
 	// (1) Le champ Prénom a un minimum de 2 caractères / n'est pas vide.
@@ -103,9 +118,9 @@ document.getElementById("btntest").addEventListener("click", function (e) {
 
 
 
-	}else{
-		
-		 validationprenom = true;
+	} else {
+
+		validationprenom = true;
 
 	}
 	//"Veuillez entrer 2 caractères ou plus pour le champ du nom."//
@@ -126,11 +141,11 @@ document.getElementById("btntest").addEventListener("click", function (e) {
 
 
 
-	}else{
-		
-		validationprenom = true;
+	} else {
 
-   }
+		validationnom = true;
+
+	}
 
 
 
@@ -141,12 +156,14 @@ document.getElementById("btntest").addEventListener("click", function (e) {
 	if (!mail.value.match(regexmail)) {
 		erremail.textContent = "veuillez renseigner un email";
 		mail.classList.add("formulaire_erreur")
-		
+		validationmail = false;
+
 
 	} else {
 		mail.classList.add("formulaire_valid")
 		erremail.textContent = "";
-		
+		validationmail = true;
+
 	}
 
 
@@ -156,9 +173,11 @@ document.getElementById("btntest").addEventListener("click", function (e) {
 	if (!date.value) {
 		erreurdate.textContent = "veuillez renseigner une date de naissance";
 		date.classList.add("formulaire_erreur")
+		validationdate = false;
 	} else {
 		date.classList.add("formulaire_valider")
 		erreurdate.textContent = "";
+		validationdate = true;
 	}
 
 
@@ -168,15 +187,18 @@ document.getElementById("btntest").addEventListener("click", function (e) {
 	if (!question.value) {
 		erreurquestion.textContent = "veuillez répondre à la question ";
 		question.classList.add("formulaire_erreur")
+		validationparticip = false;
 	} else {
 		question.classList.add("formulaire_valider")
 		erreurquestion.textContent = "";
+		validationparticip = true;
 	}
 
 	// Choix de la ville // 
 
 
-	if (!ville.value) {
+
+	if (!checkbox1.checked && !checkbox2.checked && !checkbox3.checked && !checkbox4.checked && !checkbox5.checked && !checkbox6.checked) {
 
 		erreurville.textContent = "veuillez choisir une ville ";
 
@@ -186,9 +208,36 @@ document.getElementById("btntest").addEventListener("click", function (e) {
 
 
 
-	if (validationprenom && validationnom)  {
+	console.log(checkboxvalidation);
+
+ if (!checkboxvalidation.checked ){
+
+	erreurcheckbox.textContent = "Veuillez cocher la case";
+
+
+	
+	
+	
+	
+}else{
+	
+	erreurcheckbox.textContent = "";
+	
+
+	
+
+ }
+
+
+	console.log(validationprenom);
+	console.log(validationnom);
+	console.log(validationmail);
+	console.log(validationdate);
+
+	if (validationprenom && validationnom && validationdate && validationmail && validationparticip && checkboxvalidation ) {
 
 		ModalSubmit()
+
 
 	}
 
