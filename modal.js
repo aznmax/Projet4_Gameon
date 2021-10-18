@@ -15,28 +15,31 @@ const formData = document.querySelectorAll(".formData");
 const erreurprenom = document.getElementById('formerror');
 const erreurnom = document.getElementById('formerror2');
 const erreurmail = document.getElementById('formerror3');
+let  validationprenom = false;
+let validationnom = false;
+
 
 
 // Regex // 
 
-  //Regex
+//Regex
 
-  const configregex=/^[a-zA-ZÀ-ÖØ-öø-ÿ---_]+$/;
-  const regexmail = /^\S+@\S+\.\S+$/;
+const configregex = /^[a-zA-ZÀ-ÖØ-öø-ÿ---_]+$/;
+const regexmail = /^\S+@\S+\.\S+$/;
 
 
-  
 
-    // DISPLAY MODAL SUBMIT
-	function displayModalSubmit() {
-		modalbg.style.display = 'none';
-		thankBg.style.display = 'block';
-		}
+
+// DISPLAY MODAL SUBMIT
+function displayModalSubmit() {
+	modalbg.style.display = 'none';
+	thankBg.style.display = 'block';
+}
 
 // Erreur Formulaire // 
 
-const erremail =document.querySelector("#erreur_email")
-const erreurdate =document.querySelector("#erreur_date")
+const erremail = document.querySelector("#erreur_email")
+const erreurdate = document.querySelector("#erreur_date")
 const erreurquestion = document.querySelector('#erreur_participation')
 const erreurville = document.querySelector('#erreurville')
 
@@ -75,31 +78,35 @@ document.getElementById('location2').checked = true;
 // Ajouter validation ou messages d'erreur// 
 
 
-document.getElementById("btntest").addEventListener("click",function(e){
+
+
+document.getElementById("btntest").addEventListener("click", function (e) {
 
 
 
-
-	
 	// (1) Le champ Prénom a un minimum de 2 caractères / n'est pas vide.
 
 
 	const valeurprenom = document.getElementById("prenom").value;
-	
+
 	console.log(valeurprenom);
-	
-	
 
-	erreurprenom.style.display= "none";
 
-	if(valeurprenom.length < 2){
+
+	erreurprenom.style.display = "none";
+
+	if (valeurprenom.length < 2) {
+
+
+		erreurprenom.style.display = "inline-block";
+		validationprenom = false;
+
+
+
+	}else{
 		
-		
-		erreurprenom.style.display= "inline-block";
-		
-		
-		
-		
+		 validationprenom = true;
+
 	}
 	//"Veuillez entrer 2 caractères ou plus pour le champ du nom."//
 
@@ -108,32 +115,39 @@ document.getElementById("btntest").addEventListener("click",function(e){
 
 	console.log(valeurnom);
 
-	erreurnom.style.display= "none";
+	erreurnom.style.display = "none";
 
-	if(valeurnom.length < 2){
+	if (valeurnom.length < 2) {
+
+
+		erreurnom.style.display = "inline-block";
+		validationnom = false;
+
+
+
+
+	}else{
 		
-		
-		erreurnom.style.display= "inline-block";
-		
-		
-		
-		
-	}
+		validationprenom = true;
+
+   }
 
 
 
 
 	// Vérifier adresse Email// 
 
-	
+
 	if (!mail.value.match(regexmail)) {
 		erremail.textContent = "veuillez renseigner un email";
-		mail.classList.add ("formulaire_erreur")
+		mail.classList.add("formulaire_erreur")
+		
 
-	  }else {
-		mail.classList.add ("formulaire_valid")
+	} else {
+		mail.classList.add("formulaire_valid")
 		erremail.textContent = "";
-	  }
+		
+	}
 
 
 
@@ -141,44 +155,44 @@ document.getElementById("btntest").addEventListener("click",function(e){
 
 	if (!date.value) {
 		erreurdate.textContent = "veuillez renseigner une date de naissance";
-		date.classList.add ("formulaire_erreur")
-	  }else {
-		date.classList.add ("formulaire_valider")
+		date.classList.add("formulaire_erreur")
+	} else {
+		date.classList.add("formulaire_valider")
 		erreurdate.textContent = "";
-	  }
+	}
 
 
 
-	  //Nombre de  Participation // 
+	//Nombre de  Participation // 
 
-	  if (!question.value) {
+	if (!question.value) {
 		erreurquestion.textContent = "veuillez répondre à la question ";
-		question.classList.add ("formulaire_erreur")
-	  }else {
-		question.classList.add ("formulaire_valider")
+		question.classList.add("formulaire_erreur")
+	} else {
+		question.classList.add("formulaire_valider")
 		erreurquestion.textContent = "";
-	  }
+	}
 
-	  // Choix de la ville // 
+	// Choix de la ville // 
 
-	
+
 	if (!ville.value) {
 
 		erreurville.textContent = "veuillez choisir une ville ";
 
 	} else {
 		erreurville.textContent = "";
-	  }
+	}
 
 
- 
-	  if (nom.value && prenom.value && mail.value && date.value && question.value ) {
-	
-		ModalSubmit()  
-		
-	  } 
 
-	
+	if (validationprenom && validationnom)  {
+
+		ModalSubmit()
+
+	}
+
+
 }
 
 
@@ -203,11 +217,11 @@ closebtn.addEventListener('click', function () {
 // confirmation 
 
 function ModalSubmit() {
-	modalbg.style.display = 'none';	
+	modalbg.style.display = 'none';
 	modalSubmit.style.display = 'block';
 
-	
-	
+
+
 }
 
 
