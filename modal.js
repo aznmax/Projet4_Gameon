@@ -234,7 +234,7 @@ document.getElementById("btntest").addEventListener("click", function (e) {
 	console.log(validationmail);
 	console.log(validationdate);
 
-	if (validationprenom && validationnom && validationdate && validationmail && validationparticip && checkboxvalidation ) {
+	if (validationprenom && validationnom && validationdate && validationmail && validationparticip && checkboxvalidation.checked && erreurcheckbox ) {
 
 		ModalSubmit()
 
