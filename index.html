@@ -73,7 +73,9 @@
 
             <div class="formData">
               <label for="nom">Nom</label><br>
-              <input class="text-control" type="text" id="nom" name="last" minlength="2" /><br>
+              <input onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)" class="text-control" type="text" id="nom" name="first" minlength="2" /><br>
+              
+              
 
               <span id="formerror2">Le champ nom a un minimum de 2 caractères / n'est pas vide.</span>
 
