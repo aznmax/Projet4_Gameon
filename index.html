@@ -60,12 +60,15 @@
           name="reserve" class="formulaire" action="index.html" method="get" onsubmit="return validate();">
             <div class="formData">
               <label for="prenom">Prénom</label><br>
-              <input class="text-control" type="text" id="prenom" name="first" minlength="2" /><br>
+              <input onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)" class="text-control" type="text" id="prenom" name="first" minlength="2" /><br>
 
               <span id="formerror">Le champ Prénom a un minimum de 2 caractères / n'est pas vide.</span>
 
 
             </div>
+
+            
+            
             <span class="errorMessage" id="first_errorMessage"></span>
 
             <div class="formData">
@@ -91,7 +94,7 @@
             </div>
             <div class="formData">
               <label for="date">Date de naissance</label><br>
-              <input class="text-control" type="date" id="date" name="birthdate" /><br>
+              <input class="text-control" type="date" id="date" name="birthdate" min='1900-01-01' max='2013-12-31'  /><br>
               <span class="erreur" id="erreur_date"></span>
             </div>
             <div class="formData">

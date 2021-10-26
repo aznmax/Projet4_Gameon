@@ -32,6 +32,8 @@ const checkboxvalidation = document.querySelector("#checkbox1");
 
 
 
+
+
 // Regex // 
 
 //Regex
